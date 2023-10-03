@@ -26,4 +26,12 @@ for response in responses:
     if match:
         event_datetime = match.group(0)
         print(f"Event Date/Time: {event_datetime}")
-        
+
+# Extracting RGB Color Values
+for response in responses:
+    match = re.search(r"rgb\((\d+),\s*(\d+),\s*(\d+)\)", response)
+    if match:
+        r = match.group(1)
+        g = match.group(2)
+        b = match.group(3)
+        print(f"RGB Color: ({r}, {g}, {b})")   
