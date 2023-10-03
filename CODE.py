@@ -1,6 +1,6 @@
 import re
 
-# Example API responses
+# API responses
 responses = [
     "Restaurant Name - Cuisine Type",
     "ingredient1, ingredient2, ingredient3",
@@ -55,3 +55,16 @@ for response in responses:
     if match:
         product_code = match.group(1)
         print(f"Product Code: {product_code}")
+
+# Extracting Ingredient Lists
+for response in responses:
+    ingredients = re.findall(r"([^,]+)(?:,\s*([^,]+))*", response)
+    if ingredients:
+        print(f"Ingredients: {', '.join(ingredients)}")
+
+# Extracting Email Addresses
+for response in responses:
+    email = re.search(r"([\w.-]+@[\w.-]+)", response)
+    if email:
+        email_address = email.group(1)
+        print(f"Email Address: {email_address}")
