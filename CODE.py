@@ -47,4 +47,11 @@ for response in responses:
 for response in responses:
     usernames = re.findall(r"@(\w+)", response)
     if usernames:
-        print(f"Username: {', '.join(usernames)}")
+       print(f"Username: {', '.join(usernames)}")
+
+     # Extracting Product Codes
+for response in responses:
+    match = re.search(r"([A-Z]{3}\d{3})", response)
+    if match:
+        product_code = match.group(1)
+        print(f"Product Code: {product_code}")
