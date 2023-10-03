@@ -31,7 +31,20 @@ for response in responses:
 for response in responses:
     match = re.search(r"rgb\((\d+),\s*(\d+),\s*(\d+)\)", response)
     if match:
+
+# Extracting Event Dates and Times
+for response in responses:
+    match = re.search(r"(\w{3} \d{2}, \d{4} - \d{2}:\d{2} [APap][Mm])", response)
+    if match:
+        event_datetime = match.group(0)
+        print(f"Event Date/Time: {event_datetime}")
         r = match.group(1)
         g = match.group(2)
         b = match.group(3)
         print(f"RGB Color: ({r}, {g}, {b})")   
+
+# Extracting Social Media Usernames
+for response in responses:
+    usernames = re.findall(r"@(\w+)", response)
+    if usernames:
+        print(f"Username: {', '.join(usernames)}")
